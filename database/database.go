@@ -1,6 +1,7 @@
 package database
 
 import (
+	"github.com/abnerdsilva/webapi_mvc_with_go/database/migrations"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
@@ -23,6 +24,8 @@ func StartDB() {
 	config.SetMaxIdleConns(10)
 	config.SetMaxOpenConns(100)
 	config.SetConnMaxLifetime(time.Hour)
+
+	migrations.RunMigrations(db)
 }
 
 func GetDatabase() *gorm.DB {
