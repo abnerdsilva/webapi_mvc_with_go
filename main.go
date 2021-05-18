@@ -1,8 +1,13 @@
 package main
 
-import server2 "github.com/abnerdsilva/webapi_mvc_with_go/server"
+import (
+	"github.com/abnerdsilva/webapi_mvc_with_go/database"
+	"github.com/abnerdsilva/webapi_mvc_with_go/server"
+)
 
 func main() {
-	server := server2.NewServer()
+	database.StartDB()
+
+	server := server.NewServer()
 	server.Run()
 }
